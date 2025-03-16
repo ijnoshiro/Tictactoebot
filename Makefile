@@ -1,6 +1,6 @@
-CC = gcc
-CFLAGS = -I.
-DEPS = tictactoe.h
+CC := gcc
+CFLAGS := -I.
+DEPS := tictactoe.h
 
 %.o : %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
