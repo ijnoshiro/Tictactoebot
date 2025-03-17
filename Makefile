@@ -1,14 +1,21 @@
-CC := gcc
-CFLAGS := -I.
-DEPS := tictactoe.h
+CC = gcc
+CFLAGS = -Wall -I.
+DEBUGFLAGS = -oo -g
+TARGET = tictactoe.exe
+SRC = tictactoe.c
+OBJ = $(SRC:.c=.o)
 
-%.o : %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+all: $(TARGET)
+	
 
-tictactoe : tictactoe.o
-	$(CC) -o tictactoe.exe tictactoe.o
+debug: CFLAGS += $(DEBUGFLAGS)
+debug: $(TARGET)
 
-.PHONY : clean
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
 
-clean :
+%.o: %.c tictactoe.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+clean:
 	rm -f *.o *.exe

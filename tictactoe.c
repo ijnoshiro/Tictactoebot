@@ -73,6 +73,7 @@ int evalGrid(char *tttGridPtr)
     // draw check
     if (topRow + midRow + botRow == filledBoard)
     {
+        printf("Draw");
         return 3;
     }
     // no win concluded
@@ -148,17 +149,18 @@ int tictactoe()
         printf("Select grid location: (a-c)(1-3) \n");
         char rowLoc;
         int colLoc;
-        scanf("%c %d", &rowLoc, &colLoc);
-        // printf("You entered: %c %d\n", rowLoc, colLoc);
+        scanf(" %c%d", &rowLoc, &colLoc);
+        printf("You entered: %c %d\n", rowLoc, colLoc);
         if (updateGrid(tttGrid, rowLoc, colLoc, turn))
         {
-            return -1; // update it so if bad moves are made retry the move
+            printf("Invalid input, please try again.");
+            continue;
         }
         if (printGrid(tttGrid))
         {
             return -1;
         }
-        if (evalGrid(tttGrid))
+        if (evalGrid(tttGrid)) //change this to do specific thing based on return of evalgrid.
         {
             return -1;
         }
