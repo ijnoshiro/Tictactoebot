@@ -1,4 +1,4 @@
-#include <tictactoe.h>
+#include "tictactoe.h"
 
 // local constants
 #define rowLength 3
@@ -39,41 +39,41 @@ int evalGrid(char *tttGridPtr)
     // o win checking
     if (topRow == oWin || midRow == oWin || botRow == oWin)
     {
-        printf("Player o wins! Row Win");
+        printf("Player o wins! Row Win\n");
         return 1;
     }
     if (leftCol == oWin || midCol == oWin || rightCol == oWin)
     {
-        printf("Player o wins! Column Win");
+        printf("Player o wins! Column Win\n");
         return 1;
     }
     if (leftDiag == oWin || rightDiag == oWin)
     {
-        printf("Player o wins! Diagonal Win");
+        printf("Player o wins! Diagonal Win\n");
         return 1;
     }
 
     // x win checking
     if (topRow == xWin || midRow == xWin || botRow == xWin)
     {
-        printf("Player x wins! Row Win");
+        printf("Player x wins! Row Win\n");
         return 2;
     }
     if (leftCol == xWin || midCol == xWin || rightCol == xWin)
     {
-        printf("Player x wins! Column Win");
+        printf("Player x wins! Column Win\n");
         return 2;
     }
     if (leftDiag == xWin || rightDiag == xWin)
     {
-        printf("Player x wins! Diagonal Win");
+        printf("Player x wins! Diagonal Win\n");
         return 2;
     }
 
     // draw check
     if (topRow + midRow + botRow == filledBoard)
     {
-        printf("Draw");
+        printf("Draw\n");
         return 3;
     }
     // no win concluded
@@ -150,10 +150,10 @@ int tictactoe()
         char rowLoc;
         int colLoc;
         scanf(" %c%d", &rowLoc, &colLoc);
-        printf("You entered: %c %d\n", rowLoc, colLoc);
+        printf("You entered: %c %d\n\v", rowLoc, colLoc);
         if (updateGrid(tttGrid, rowLoc, colLoc, turn))
         {
-            printf("Invalid input, please try again.");
+            printf("Invalid input, please try again.\n");
             continue;
         }
         if (printGrid(tttGrid))
@@ -167,32 +167,4 @@ int tictactoe()
         turn = !turn;
     }
     return 4;
-}
-
-int main()
-{
-    // print winner
-    switch (tictactoe())
-    {
-    case 0:
-        printf("Player O Wins!\n");
-        break;
-
-    case 1:
-        printf("Player X Wins!\n");
-        break;
-
-    case 2:
-        printf("Its a Draw!\n");
-        break;
-
-    case -1:
-        printf("Error\n");
-        break;
-
-    case 4:
-        printf("In inplementation\n");
-        break;
-    }
-    return 0;
 }

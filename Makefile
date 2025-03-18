@@ -1,10 +1,14 @@
 # Thanks to Job Vranish (https://spin.atomicobject.com/2016/08/26/makefile-c-projects/)
 # Thanks to https://makefiletutorial.com/#makefile-cookbook
 
-TARGET_EXEC := final_program.bin
+TARGET_EXEC := ../final_program.bin
 
 BUILD_DIR := ./build
 SRC_DIRS := ./src
+
+CC := gcc
+CFLAGS := -Wall -Wextra -Wshadow -lpthread -lblas -lboost_system -lboost_filesystem
+DEBUG_FLAGS :=
 
 # Find C files to compile
 SRCS := $(shell find $(SRC_DIRS) -name '*.c' -or -name '*.s')

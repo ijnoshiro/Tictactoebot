@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <stdbool.h>
 
 //ANSI ESCAPE CODES for terminal text coloring
