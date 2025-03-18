@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdbool.h>
 
 //ANSI ESCAPE CODES for terminal text coloring
@@ -12,5 +11,3 @@ int evalGRid(char *);
 int printGrid(char *);
 int updateGrid(char *, char, int, bool);
 int tictactoe();
-
-int main();
